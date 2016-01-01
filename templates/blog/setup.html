@@ -1,24 +1,28 @@
 {% extends "base.html" %}
 
-{% block title %}Author Register{% endblock %}
+{% block title %}Blog Creation{% endblock %}
 
 {% block content %}
-
 <div class = "row">
     <div class = "col-md-offset-3 col-md-6">
-        <h3>Author Registration</h3>
-        {% from "_formhelpers.html" import renderfield %}
-        <form method = "POST" action = "{{ url_for('register') }}" role = "form">
+        <h3>Blog Creation</h3>
+        
+        {% from "_formhelpers.html" import render_field %}
+        <form method = "POST" action = "{{ url_for('setup')}}" role = "form">
             {{ form.hidden_tag() }}
-           
+            <h4>Blog Information</h4>
+            {{ renderfield(form.name, class = 'form-control') }}
+            
+            <h4>Admin User</h4>
             {{ renderfield(form.fullname, class='form-control') }}
             {{ renderfield(form.email, class='form-control') }} 
             {{ renderfield(form.username, class='form-control') }}
             {{ renderfield(form.password, class='form-control') }}
             {{ renderfield(form.confirm, class='form-control') }}
-            <button type="submit" class="btn btn-default">Register</button>
+            <button type="submit" class="btn btn-default">Create Blog</button>
         </form>
     </div>
+    
 </div>
 
 {% endblock %}
